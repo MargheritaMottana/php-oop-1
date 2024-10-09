@@ -21,42 +21,81 @@
         // attributi della classe
         public $title;
         public $director;
-        public $year;
+        // rendo privato l'anno così da aggiungere una validazione
+        private $year;
         public $genre;
         public $duration;
 
-        // definizione del costruttore per non utilizzare quello implicito
-        function __construct($title, $director, $year, $genre, $duration){
+         // definizione del costruttore per non utilizzare quello implicito
+         function __construct(
+            $title,
+            $director,
+            // $year,
+            $genre,
+            $duration) {
             $this -> title = $title;
             $this -> director = $director;
-            $this -> year = $year;
+            // $this -> year = $year;
             $this -> genre = $genre;
             $this -> duration = $duration;
         }
 
+        // setto la funzione che controlli se l'anno inserito è un numero
+        public function setYear($year){
+            if(is_numeric($year)){
+                $this->year = $year;
+            }
+            else{
+                $this->year = '¯\_(ツ)_/¯';
+            }
+        }
+
+        // rendo la funzione fruibile all'esterno
+        public function getYear(){
+            return $this-> year;
+        }
+       
         public function getFullData(){
-            return 'Title: '.$this->title.', Director: '.$this->director.', Year: '.$this->year.', Genre: '.$this->genre.', Duration: '.$this->duration;
+            return 'Title: '.$this->title.', Director: '.$this->director.', Year: '.$this->getYear().', Genre: '.$this->genre.', Duration: '.$this->duration;
         }
 
     }
 
     // richiamata la classe, si crea l'istanza
     // accedo agli attributi della classe valorizzando l'istanza
-    $ilLabirintoDelFauno = new Movie('Il labirinto del Fauno', 'Guillermo del Toro', 2006, 'Dark Fantasy', '119 min');
+    $ilLabirintoDelFauno = new Movie('Il labirinto del Fauno', 'Guillermo del Toro', 'Dark Fantasy', '119 min');
+    // setto l'anno corretto per visualizzare in pagina il numero
+    $ilLabirintoDelFauno->setYear(2006);
     
-    var_dump($ilLabirintoDelFauno);
-    var_dump($ilLabirintoDelFauno->getFullData());
+    // creata seconda istanza
+    $TheSkyCrawlers = new Movie ('The Sky Crawlers', 'Mamoru Oshii', 'Adult Anime', '122 min');
+    // setto l'anno scorretto per visualizzare in pagina l'errore
+    $TheSkyCrawlers->setYear('duemilaotto');
 
     ?>
 
     <main class="container py-5">
+
         <h1>
             PHP OOP 1
         </h1>
 
         <div>
 
+            <p class="mb-3">
+                <?php
+                    echo $ilLabirintoDelFauno->getFullData();
+                ?>
+            </p>
+
+            <p>
+                <?php
+                    echo $TheSkyCrawlers->getFullData();
+                ?>
+            </p>
+
         </div>
+
     </main>
 
     <!-- bs -->
