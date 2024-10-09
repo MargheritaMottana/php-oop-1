@@ -15,12 +15,28 @@
 
     <?php
 
+    // definizione della classe
     class Movie{
+
+        // attributi della classe
+        public $title;
+        public $director;
+        public $year;
+        public $genre;
+        public $duration;
 
     }
 
+    // richiamata la classe, si crea l'istanza
     $ilLabirintoDelFauno = new Movie();
 
+    // accedo agli attributi della classe
+    $ilLabirintoDelFauno -> title = 'Il labirinto del Fauno';
+    $ilLabirintoDelFauno -> director = 'Guillermo del Toro';
+    $ilLabirintoDelFauno -> year = 2006;
+    $ilLabirintoDelFauno -> genre = 'Dark Fantasy';
+    $ilLabirintoDelFauno -> duration = '119 min';
+    
     var_dump($ilLabirintoDelFauno)
 
     ?>
