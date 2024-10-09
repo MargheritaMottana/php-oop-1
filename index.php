@@ -25,19 +25,27 @@
         public $genre;
         public $duration;
 
+        // definizione del costruttore per non utilizzare quello implicito
+        function __construct($title, $director, $year, $genre, $duration){
+            $this -> title = $title;
+            $this -> director = $director;
+            $this -> year = $year;
+            $this -> genre = $genre;
+            $this -> duration = $duration;
+        }
+
+        public function getFullData(){
+            return 'Title: '.$this->title.', Director: '.$this->director.', Year: '.$this->year.', Genre: '.$this->genre.', Duration: '.$this->duration;
+        }
+
     }
 
     // richiamata la classe, si crea l'istanza
-    $ilLabirintoDelFauno = new Movie();
-
-    // accedo agli attributi della classe
-    $ilLabirintoDelFauno -> title = 'Il labirinto del Fauno';
-    $ilLabirintoDelFauno -> director = 'Guillermo del Toro';
-    $ilLabirintoDelFauno -> year = 2006;
-    $ilLabirintoDelFauno -> genre = 'Dark Fantasy';
-    $ilLabirintoDelFauno -> duration = '119 min';
+    // accedo agli attributi della classe valorizzando l'istanza
+    $ilLabirintoDelFauno = new Movie('Il labirinto del Fauno', 'Guillermo del Toro', 2006, 'Dark Fantasy', '119 min');
     
-    var_dump($ilLabirintoDelFauno)
+    var_dump($ilLabirintoDelFauno);
+    var_dump($ilLabirintoDelFauno->getFullData());
 
     ?>
 
