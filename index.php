@@ -30,12 +30,13 @@
          function __construct(
             $title,
             $director,
-            // $year,
+            $year,
             $genre,
             $duration) {
             $this -> title = $title;
             $this -> director = $director;
-            // $this -> year = $year;
+            // richiamo il metodo nel costruttore così che, in caso gli passi il dato passato nell'istanza, non me lo faccia visualizzare
+            $this -> setYear($year);
             $this -> genre = $genre;
             $this -> duration = $duration;
         }
@@ -45,14 +46,11 @@
             if(is_numeric($year)){
                 $this->year = $year;
             }
-            else{
-                $this->year = '¯\_(ツ)_/¯';
-            }
         }
 
         // rendo la funzione fruibile all'esterno
         public function getYear(){
-            return $this-> year;
+            return $this->year;
         }
        
         public function getFullData(){
@@ -63,14 +61,12 @@
 
     // richiamata la classe, si crea l'istanza
     // accedo agli attributi della classe valorizzando l'istanza
-    $ilLabirintoDelFauno = new Movie('Il labirinto del Fauno', 'Guillermo del Toro', 'Dark Fantasy', '119 min');
+    $ilLabirintoDelFauno = new Movie('Il labirinto del Fauno', 'Guillermo del Toro', 2006, 'Dark Fantasy', '119 min');
     // setto l'anno corretto per visualizzare in pagina il numero
-    $ilLabirintoDelFauno->setYear(2006);
     
     // creata seconda istanza
-    $TheSkyCrawlers = new Movie ('The Sky Crawlers', 'Mamoru Oshii', 'Adult Anime', '122 min');
+    $TheSkyCrawlers = new Movie ('The Sky Crawlers', 'Mamoru Oshii', 'duemilaotto', 'Adult Anime', '122 min');
     // setto l'anno scorretto per visualizzare in pagina l'errore
-    $TheSkyCrawlers->setYear('duemilaotto');
 
     ?>
 
